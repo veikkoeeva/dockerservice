@@ -1,0 +1,22 @@
+trigger:
+- master
+
+pool:
+  vmImage: windows-latest
+
+steps:
+- task: AzureCLI@2
+  displayName: Az --version
+  inputs:
+    azureSubscription: 'TestManagedIdentityConnection'
+    scriptType: pscore
+    scriptLocation: inlineScript
+    inlineScript: |
+      az --version
+
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'TestManagedIdentityConnection'
+    scriptType: 'pscore'
+    scriptLocation: 'scriptPath'
+    scriptPath: '$(System.DefaultWorkingDirectory)\devops.ps1'

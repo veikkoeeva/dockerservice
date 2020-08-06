@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  listenerservice:
+    image: ${DOCKER_REGISTRY-}listenerservice
+    build:
+      context: .
+      dockerfile: ListenerService/Dockerfile
+    ports:
+      - "5556:9999"
+    networks:
+      - product-network
+
+  webapi:
+    image: ${DOCKER_REGISTRY-}webapi
+    build:
+      context: .
+      dockerfile: WebApi/Dockerfile
+    ports:
+      - "5555:8888"
+    networks:
+      - product-network
+
+networks:
+  product-network:
+    driver: bridge

@@ -1,0 +1,1 @@
+ docker build -f "./WebApi/Dockerfile" --force-rm -t webapi:dev --target final --label "com.microsoft.created-by=visual-studio" --label "com.microsoft.visual-studio.project-name=WebApi" "C:\projektit\DockerService"
